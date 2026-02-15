@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Web Dev Mini-Quest</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-image: url('back.gif');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      min-height: 100vh;
+      padding: 50px 0;
+    }
+
+    .container {
+      max-width: 800px;
+    }
+
+    .card {
+      position: relative;
+      border-radius: 25px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      transition: 0.3s;
+    }
+
+    .level-badge {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="card shadow-lg rounded-4 p-5">
+
+      <span class="badge bg-primary fs-6 px-3 py-2 rounded-3 level-badge">
+        Level 6
+      </span>
+
+      <h1 class="fw-bold display-5 mb-3 mt-4">
+        Conditionals: Pick the Correct Door
+      </h1>
+
+      <p class="fs-5 text-secondary mb-4">
+        Click a door. Only one is correct. Use <strong>if/else</strong>.
+      </p>
+
+      <div class="row g-3 mb-4">
+        <div class="col-md-4">
+          <button class="btn btn-success btn-lg w-100 py-3" id="door1">
+            🚪 Door 1
+          </button>
+        </div>
+        <div class="col-md-4">
+          <button class="btn btn-warning btn-lg w-100 py-3" id="door2">
+            🚪 Door 2
+          </button>
+        </div>
+        <div class="col-md-4">
+          <button class="btn btn-danger btn-lg w-100 py-3" id="door3">
+            🚪 Door 3
+          </button>
+        </div>
+      </div>
+
+      <div class="alert alert-secondary mb-4" id="resultBox">
+        Choose a door to see the result.
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6">
+          <a href="level5.html" class="btn btn-secondary btn-lg w-100 py-3">
+            Back
+          </a>
+        </div>
+        <div class="col-md-6">
+          <a href="level1.html" class="btn btn-dark btn-lg w-100 py-3">
+            Restart (Level 1)
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const door1 = document.getElementById('door1');
+    const door2 = document.getElementById('door2');
+    const door3 = document.getElementById('door3');
+    const resultBox = document.getElementById('resultBox');
+
+    const correctDoor = 2; // Door 2 is correct
+
+    door1.addEventListener('click', function() {
+      checkDoor(1);
+    });
+
+    door2.addEventListener('click', function() {
+      checkDoor(2);
+    });
+
+    door3.addEventListener('click', function() {
+      checkDoor(3);
+    });
+
+    function checkDoor(doorNumber) {
+      if (doorNumber === correctDoor) {
+        resultBox.className = 'alert alert-success mb-4';
+        resultBox.textContent = '✅ Correct! You found the right door!';
+      } else {
+        resultBox.className = 'alert alert-danger mb-4';
+        resultBox.textContent = '❌ Wrong door! Try again.';
+      }
+    }
+  </script>
+
+</body>
+</html>
+
